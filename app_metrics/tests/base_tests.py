@@ -2,7 +2,7 @@ import datetime
 from decimal import Decimal
 import mock
 
-from django.test import TestCase
+from django.test import TransactionTestCase, TestCase
 from django.core import management
 from django.conf import settings
 from django.core import mail
@@ -16,7 +16,7 @@ from app_metrics.models import Metric, MetricItem, MetricDay, MetricWeek, Metric
 from app_metrics.utils import *
 from app_metrics.trending import _trending_for_current_day, _trending_for_yesterday, _trending_for_week, _trending_for_month, _trending_for_year
 
-class MetricCreationTests(TestCase):
+class MetricCreationTests(TransactionTestCase):
 
     def test_auto_slug_creation(self):
         new_metric = Metric.objects.create(name='foo bar')
