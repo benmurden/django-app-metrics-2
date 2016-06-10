@@ -5,6 +5,10 @@ Django App Metrics
 .. image:: https://secure.travis-ci.org/frankwiles/django-app-metrics.png
     :alt: Build Status
     :target: http://travis-ci.org/frankwiles/django-app-metrics
+    
+This is a fork of the original django-app-metrics that adds timezone support, 
+eliminating warnings about naive datetimes. As such, support for Django 1.3 
+is dropped.
 
 django-app-metrics allows you to capture and report on various events in your
 applications.  You simply define various named metrics and record when they
@@ -40,7 +44,7 @@ settings and it will behave as if Celery was not configured.
 .. _Celery: http://celeryproject.org/
 .. _`django-celery`: http://ask.github.com/django-celery/
 
-Django 1.2 and above
+Django 1.4 and above
 
 Usage
 =====
