@@ -6,6 +6,7 @@ from django.test import TestCase
 from django.core import management
 from django.conf import settings
 from django.core import mail
+from django.db import transaction
 from django.contrib.auth.models import User
 from django.core.exceptions import ImproperlyConfigured
 from django.utils import timezone
@@ -22,7 +23,9 @@ class MetricCreationTests(TestCase):
         self.assertEqual(new_metric.name, 'foo bar')
         self.assertEqual(new_metric.slug, 'foo-bar')
 
-        new_metric2 = Metric.objects.create(name='foo bar')
+        with transaction.atomic():
+            new_metric2 = Metric.objects.create(name='foo bar')
+
         self.assertEqual(new_metric2.name, 'foo bar')
         self.assertEqual(new_metric2.slug, 'foo-bar_1')
 
