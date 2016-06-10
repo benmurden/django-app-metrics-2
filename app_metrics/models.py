@@ -57,7 +57,7 @@ class MetricItem(models.Model):
     """ Individual metric items """
     metric = models.ForeignKey(Metric, verbose_name=_('metric'))
     num = models.IntegerField(_('number'), default=1)
-    created = models.DateTimeField(_('created'), default=timezone.datetime.now)
+    created = models.DateTimeField(_('created'), default=timezone.now)
 
     class Meta:
         verbose_name = _('metric item')
@@ -148,8 +148,8 @@ class Gauge(models.Model):
     name = models.CharField(_('name'), max_length=50)
     slug = models.SlugField(_('slug'), unique=True, max_length=60)
     current_value = models.DecimalField(_('current value'), max_digits=15, decimal_places=6, default='0.00')
-    created = models.DateTimeField(_('created'), default=timezone.datetime.now)
-    updated = models.DateTimeField(_('updated'), default=timezone.datetime.now)
+    created = models.DateTimeField(_('created'), default=timezone.now)
+    updated = models.DateTimeField(_('updated'), default=timezone.now)
 
     class Meta:
         verbose_name = _('gauge')
