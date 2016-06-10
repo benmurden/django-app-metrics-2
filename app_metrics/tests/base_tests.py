@@ -7,7 +7,7 @@ from django.core import management
 from django.conf import settings
 from django.core import mail
 from django.db import transaction
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ImproperlyConfigured
 from django.utils import timezone
 
@@ -15,6 +15,9 @@ from app_metrics.exceptions import TimerError
 from app_metrics.models import Metric, MetricItem, MetricDay, MetricWeek, MetricMonth, MetricYear, Gauge
 from app_metrics.utils import *
 from app_metrics.trending import _trending_for_current_day, _trending_for_yesterday, _trending_for_week, _trending_for_month, _trending_for_year
+
+User = get_user_model()
+
 
 class MetricCreationTests(TransactionTestCase):
 
