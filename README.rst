@@ -1,14 +1,16 @@
 
-Django App Metrics
-==================
+Django App Metrics 2
+====================
 
-.. image:: https://secure.travis-ci.org/frankwiles/django-app-metrics.png
+.. image:: https://secure.travis-ci.org/benmurden/django-app-metrics-2.png
     :alt: Build Status
-    :target: http://travis-ci.org/frankwiles/django-app-metrics
+    :target: http://travis-ci.org/benmurden/django-app-metrics-2
     
-This is a fork of the original django-app-metrics that adds timezone support, 
+This is a fork of the original django-app-metrics_ that adds timezone support, 
 eliminating warnings about naive datetimes. As such, support for Django 1.3 
 is dropped.
+
+.. _django-app-metrics: https://github.com/frankwiles/django-app-metrics
 
 django-app-metrics allows you to capture and report on various events in your
 applications.  You simply define various named metrics and record when they
