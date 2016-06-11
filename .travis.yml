@@ -14,4 +14,4 @@ env:
   - DJANGO=1.6.11
   - DJANGO=1.7.11
   - DJANGO=1.8.13
-  - DJANGO=1.9.8
+  - DJANGO=1.9.7
