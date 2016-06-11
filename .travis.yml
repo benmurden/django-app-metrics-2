@@ -1,10 +1,10 @@
 language: python
 python:
   - "2.7"
+services:
+  - redis-server
 before_install:
   - export PIP_USE_MIRRORS=true
-  - sudo apt-get update
-  - sudo apt-get install redis-server
 install:
   - pip install -e .
   - pip install -r requirements/tests.txt Django==$DJANGO
