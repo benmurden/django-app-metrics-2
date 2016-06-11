@@ -19,15 +19,7 @@ SITE_ID = 1
 
 DEBUG = True
 
-TEST_RUNNER = 'django_coverage.coverage_runner.CoverageRunner'
-
-COVERAGE_MODULE_EXCLUDES = [
-    'tests$', 'settings$', 'urls$',
-    'common.views.test', '__init__', 'django',
-    'migrations', 'djcelery'
-]
-
-COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join(BASE_PATH, 'coverage')
+TEST_RUNNER = "djcelery.contrib.test_runner.CeleryTestSuiteRunner"
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,10 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'app_metrics',
-    'app_metrics.tests',
     'djcelery',
-    'django_coverage'
+    'app_metrics',
 ]
 
 ROOT_URLCONF = 'app_metrics.tests.urls'

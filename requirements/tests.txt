@@ -1,5 +1,4 @@
 coverage==3.7.1
-django-coverage==1.2.4
 mock==0.8.0
 django-celery==3.1.17
 # python-statsd==1.5.4
