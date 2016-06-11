@@ -16,8 +16,6 @@ from app_metrics.models import Metric, MetricItem, MetricDay, MetricWeek, Metric
 from app_metrics.utils import *
 from app_metrics.trending import _trending_for_current_day, _trending_for_yesterday, _trending_for_week, _trending_for_month, _trending_for_year
 
-User = get_user_model()
-
 
 class MetricCreationTests(TransactionTestCase):
 
@@ -230,8 +228,8 @@ class TrendingTests(TestCase):
 class EmailTests(TestCase):
     """ Test that our emails send properly """
     def setUp(self):
-        self.user1 = User.objects.create_user('user1', 'user1@example.com', 'user1pass')
-        self.user2 = User.objects.create_user('user2', 'user2@example.com', 'user2pass')
+        self.user1 = get_user_model().objects.create_user('user1', 'user1@example.com', 'user1pass')
+        self.user2 = get_user_model().objects.create_user('user2', 'user2@example.com', 'user2pass')
         self.metric1 = create_metric(name='Test Trending1', slug='test_trend1')
         self.metric2 = create_metric(name='Test Trending2', slug='test_trend2')
         self.set = create_metric_set(name="Fake Report",
