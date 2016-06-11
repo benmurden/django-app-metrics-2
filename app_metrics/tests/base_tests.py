@@ -24,12 +24,7 @@ class MetricCreationTests(TransactionTestCase):
         self.assertEqual(new_metric.name, 'foo bar')
         self.assertEqual(new_metric.slug, 'foo-bar')
 
-        try:
-            with transaction.atomic():
-                new_metric2 = Metric.objects.create(name='foo bar')
-        except IntegrityError:
-            pass
-
+        new_metric2 = Metric.objects.create(name='foo bar')
         self.assertEqual(new_metric2.name, 'foo bar')
         self.assertEqual(new_metric2.slug, 'foo-bar_1')
 

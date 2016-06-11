@@ -1,7 +1,7 @@
 import datetime
 
 from django.conf import settings
-from django.db import models, IntegrityError
+from django.db import models, IntegrityError, transaction
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
@@ -27,7 +27,8 @@ class Metric(models.Model):
             i = 0
             while True:
                 try:
-                    return super(Metric, self).save(*args, **kwargs)
+                    with transaction.atomic():
+                        return super(Metric, self).save(*args, **kwargs)
                 except IntegrityError:
                     i += 1
                     self.slug = "%s_%d" % (self.slug, i)
