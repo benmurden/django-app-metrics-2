@@ -2,7 +2,7 @@ from contextlib import contextmanager
 import datetime
 import time
 from django.conf import settings
-from django.utils.importlib import import_module
+from importlib import import_module
 from django.utils import timezone
 
 from app_metrics.exceptions import InvalidMetricsBackend, TimerError
