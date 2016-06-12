@@ -7,8 +7,11 @@ Django App Metrics 2
     :target: http://travis-ci.org/benmurden/django-app-metrics-2
     
 This is a fork of the original django-app-metrics_ that adds timezone support, 
-eliminating warnings about naive datetimes. As such, support for Django 1.3 
-is dropped.
+eliminating warnings about naive datetimes. Support has been added for later 
+versions of Django as well. With this, support for Python 2.6 is dropped. 
+Support for Django versions below 1.6 is also dropped. However, with these 
+updates, we can now support up to Django 1.9, the latest version at the time 
+of writing.
 
 .. _django-app-metrics: https://github.com/frankwiles/django-app-metrics
 
