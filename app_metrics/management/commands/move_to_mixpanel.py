@@ -1,16 +1,16 @@
-from django.core.management.base import NoArgsCommand
+from django.core.management import BaseCommand
 
 from app_metrics.models import MetricItem
 from app_metrics.backends.mixpanel import metric
 from app_metrics.utils import get_backend, get_timestamp
 
 
-class Command(NoArgsCommand):
+class Command(BaseCommand):
     help = "Move MetricItems from the db backend to MixPanel"
 
     requires_model_validation = True
 
-    def handle_noargs(self, **options):
+    def handle(self, **options):
         """ Move MetricItems from the db backend to MixPanel" """
 
         backend = get_backend()
