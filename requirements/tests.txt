@@ -3,3 +3,4 @@ mock==0.8.0
 django-celery==3.1.17
 # python-statsd==1.5.4
 redis==2.10.3
+celery>=3.1,<4
