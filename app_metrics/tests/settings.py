@@ -4,16 +4,19 @@ import django
 
 BASE_PATH = os.path.dirname(__file__)
 
-if django.VERSION[:2] >= (1, 3):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': ':memory:',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
     }
-else:
-    DATABASE_ENGINE = 'sqlite3'
-    DATABASE_NAME = ':memory:'
+}
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+    },
+]
 
 SITE_ID = 1
 
