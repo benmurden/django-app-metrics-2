@@ -100,9 +100,9 @@ def import_backend():
     # Attempt to import the backend
     try:
         backend = import_module(backend_string)
-    except Exception, e:
+    except Exception as error:
         raise InvalidMetricsBackend("Could not load '%s' as a backend: %s" %
-                                    (backend_string, e))
+                                    (backend_string, error))
 
     return backend
 
