@@ -8,8 +8,9 @@ from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
 from app_metrics.reports import generate_report
-from app_metrics.models import MetricSet, Metric 
-from app_metrics.utils import get_backend 
+from app_metrics.models import MetricSet, Metric
+from app_metrics.utils import get_backend
+
 
 class Command(BaseCommand): 
     help = "Send Report E-mails" 
@@ -19,7 +20,6 @@ class Command(BaseCommand):
     def handle(self, **options): 
         """ Send Report E-mails """ 
 
-        from django.conf import settings
         translation.activate(settings.LANGUAGE_CODE)
 
         backend = get_backend() 
@@ -57,16 +57,16 @@ class Command(BaseCommand):
             
             (message, message_html) = generate_report(s, html=True)
 
-            if message == None:
+            if message is None:
                 continue
 
-            if USE_MAILER: 
-                send_html_mail(subject=subject, 
+            if USE_MAILER:
+                send_html_mail(subject=subject,
                                message=message, 
                                message_html=message_html, 
                                from_email=settings.DEFAULT_FROM_EMAIL, 
                                recipient_list=recipient_list)
-            else: 
+            else:
                 msg = EmailMultiAlternatives(subject=subject,
                                              body=message,
                                              from_email=settings.DEFAULT_FROM_EMAIL,
