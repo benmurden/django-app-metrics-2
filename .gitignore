@@ -5,3 +5,5 @@ dist
 MANIFEST
 _build
 venv
+.idea
+
