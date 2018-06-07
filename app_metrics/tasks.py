@@ -24,7 +24,7 @@ except ImportError:
 # For redis support
 try:
     import redis
-except:
+except ImportError:
     redis = None
 
 # For librato support
