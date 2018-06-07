@@ -109,7 +109,7 @@ class MetricWeek(models.Model):
 
 class MetricMonth(models.Model):
     """ Aggregation of Metrics on monthly basis """
-    metric = models.ForeignKey(Metric, verbose_name=('metric'))
+    metric = models.ForeignKey(Metric, verbose_name=_('metric'))
     num = models.BigIntegerField(_('number'), default=0)
     created = models.DateField(_('created'), default=datetime.date.today)
 
