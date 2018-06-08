@@ -1,5 +1,5 @@
 # Backend to store info in Redis
-from django.conf import settings
+
 from app_metrics.tasks import redis_metric_task, redis_gauge_task
 
 def metric(slug, num=1, properties={}):
