@@ -1,17 +1,17 @@
 import base64
-import json
-from six.moves import urllib
 import datetime
-
-try:
-    from celery.task import task
-except ImportError:
-    from celery.decorators import task
+import json
 
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
+from six.moves import urllib
 
 from app_metrics.models import Metric, MetricItem, Gauge
+
+try:
+    from celery import shared_task as task
+except ImportError:
+    from celery.decorators import task
 
 # For statsd support
 try:
