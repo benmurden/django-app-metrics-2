@@ -1,20 +1,16 @@
-import datetime
 from decimal import Decimal
+
 import mock
-
-from django.test import TransactionTestCase, TestCase
-from django.core import management
-from django.conf import settings
-from django.core import mail
-from django.db import transaction, IntegrityError
 from django.contrib.auth import get_user_model
+from django.core import mail
+from django.core import management
 from django.core.exceptions import ImproperlyConfigured
-from django.utils import timezone
+from django.test import TransactionTestCase, TestCase
 
-from app_metrics.exceptions import TimerError
-from app_metrics.models import Metric, MetricItem, MetricDay, MetricWeek, MetricMonth, MetricYear, Gauge
+from app_metrics.models import MetricItem, MetricDay, MetricWeek, MetricMonth, MetricYear, Gauge
+from app_metrics.trending import _trending_for_current_day, _trending_for_yesterday, _trending_for_week, \
+    _trending_for_month, _trending_for_year
 from app_metrics.utils import *
-from app_metrics.trending import _trending_for_current_day, _trending_for_yesterday, _trending_for_week, _trending_for_month, _trending_for_year
 
 
 class MetricCreationTests(TransactionTestCase):
@@ -348,16 +344,16 @@ class TimestampTest(TestCase):
     """ Test timestamp utilities """
 
     def test_tz_timestamp(self):
-        dt = datetime.datetime(2016, 05, 01, 0, 0, 0, tzinfo=timezone.utc)
+        dt = datetime.datetime(2016, 5, 1, 0, 0, 0, tzinfo=timezone.utc)
         utc_ts = get_timestamp(dt)
-        dt_tz = datetime.datetime(2016, 05, 01, 0, 0, 0, tzinfo=TestTimezone())
+        dt_tz = datetime.datetime(2016, 5, 1, 0, 0, 0, tzinfo=TestTimezone())
         tz_ts = get_timestamp(dt_tz)
 
         # timestamp with a UTC offset of -9 hours should be ahead by 32400 seconds.
         self.assertEqual(utc_ts, tz_ts - 32400)
 
     def test_naive_timestamp(self):
-        dt = datetime.datetime(2016, 05, 01, 0, 0, 0, tzinfo=None)
+        dt = datetime.datetime(2016, 5, 1, 0, 0, 0, tzinfo=None)
 
         # Naive datetime to timestamp will just use local timezone. Same
         # behavior as using strftime('%s') on 'nix systems.

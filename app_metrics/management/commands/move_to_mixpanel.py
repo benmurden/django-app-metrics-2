@@ -1,7 +1,9 @@
+from __future__ import print_function
+
 from django.core.management import BaseCommand
 
-from app_metrics.models import MetricItem
 from app_metrics.backends.mixpanel import metric
+from app_metrics.models import MetricItem
 from app_metrics.utils import get_backend, get_timestamp
 
 
@@ -17,7 +19,7 @@ class Command(BaseCommand):
 
         # If not using Mixpanel this command is a NOOP
         if backend != 'app_metrics.backends.mixpanel':
-            print "You need to set the backend to MixPanel"
+            print("You need to set the backend to MixPanel")
             return
 
         items = MetricItem.objects.all()
