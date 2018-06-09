@@ -22,11 +22,11 @@ setup(
             'templates/app_metrics/*',
         ]
     },
-    install_requires = [
+    install_requires=[
         'celery',
         'django-celery',
     ],
-    tests_require = ['mock', 'django-coverage', 'coverage'],
+    tests_require=['mock', 'django-coverage', 'coverage'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
