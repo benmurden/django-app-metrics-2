@@ -83,7 +83,7 @@ def mixpanel_metric_task(slug, num, properties=None, **kwargs):
     params = {"event": slug, "properties": properties}
     b64_data = base64.b64encode(json.dumps(params).encode('utf8'))
 
-    data = urllib.parse.urlencode({"data": b64_data})
+    data = urllib.parse.urlencode({"data": b64_data}).encode('utf8')
     req = urllib.request.Request(url, data)
     for i in range(num):
         response = urllib.request.urlopen(req)
