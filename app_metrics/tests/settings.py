@@ -27,15 +27,12 @@ SITE_ID = 1
 
 DEBUG = True
 
-TEST_RUNNER = "djcelery.contrib.test_runner.CeleryTestSuiteRunner"
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'djcelery',
     'app_metrics',
 ]
 
@@ -47,4 +44,4 @@ APP_METRICS_BACKEND = 'app_metrics.backends.db'
 APP_METRICS_MIXPANEL_TOKEN = None
 APP_METRICS_DISABLED = False
 
-SECRET_KEY = "herp-derp"
+SECRET_KEY = "foo"
