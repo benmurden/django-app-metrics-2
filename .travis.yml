@@ -11,15 +11,15 @@ matrix:
     fast_finish: true
     include:
       - python: "3.4"
-        env: DJANGO>=1.11,<2.0
+        env: DJANGO=">=1.11,<2.0"
       - python: "2.7"
-        env: DJANGO>=1.11,<2.0
+        env: DJANGO=">=1.11,<2.0"
 install:
   - pip install -e .
-  - pip install -r requirements/tests.txt Django==$DJANGO
+  - pip install -r requirements/tests.txt Django$DJANGO
 script:
   - django-admin.py test --settings=app_metrics.tests.settings app_metrics
 env:
-  - DJANGO>=1.11,<2.0
-  - DJANGO>=2.1,<2.2
-  - DJANGO>=2.2,<2.3
+  - DJANGO=">=1.11,<2.0"
+  - DJANGO=">=2.1,<2.2"
+  - DJANGO=">=2.2,<2.3"
