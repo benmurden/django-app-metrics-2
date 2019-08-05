@@ -1,20 +1,21 @@
 from decimal import Decimal
 
 import mock
+import datetime
 from django.contrib.auth import get_user_model
 from django.core import mail
 from django.core import management
 from django.core.exceptions import ImproperlyConfigured
 from django.test import TransactionTestCase, TestCase
+from django.utils import timezone
 
-from app_metrics.models import MetricItem, MetricDay, MetricWeek, MetricMonth, MetricYear, Gauge
+from app_metrics.models import Metric, MetricItem, MetricDay, MetricWeek, MetricMonth, MetricYear, Gauge
 from app_metrics.trending import _trending_for_current_day, _trending_for_yesterday, _trending_for_week, \
     _trending_for_month, _trending_for_year
-from app_metrics.utils import *
+from app_metrics.utils import create_metric, metric, get_or_create_metric, year_for_date, week_for_date, month_for_date, get_previous_month, get_previous_year, get_timestamp, Timer, settings, TimerError, gauge, create_metric_set, collection_disabled
 
 
 class MetricCreationTests(TransactionTestCase):
-
     def test_auto_slug_creation(self):
         new_metric = Metric.objects.create(name='foo bar')
         self.assertEqual(new_metric.name, 'foo bar')
