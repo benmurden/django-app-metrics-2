@@ -11,8 +11,8 @@ USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
 class Metric(models.Model):
     """ The type of metric we want to store """
-    name = models.CharField(_('name'), max_length=50)
-    slug = models.SlugField(_('slug'), unique=True, max_length=60, db_index=True)
+    name = models.CharField(_('name'), max_length=128)
+    slug = models.SlugField(_('slug'), unique=True, max_length=128, db_index=True)
 
     class Meta:
         verbose_name = _('metric')
